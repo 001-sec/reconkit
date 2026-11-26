@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>reconkit - passive OSINT recon for domains</title>
+<style>
+:root{--bg:#0d1117;--fg:#e6edf3;--mut:#8b949e;--acc:#d2a8ff;--card:#161b22;--bord:#30363d}
+*{margin:0;box-sizing:border-box}body{background:var(--bg);color:var(--fg);font:16px/1.6 -apple-system,"Segoe UI",Roboto,sans-serif}
+.wrap{max-width:860px;margin:0 auto;padding:48px 24px}
+h1{font-size:2.6rem;letter-spacing:-1px}h1 span{color:var(--acc)}
+.tag{color:var(--mut);font-size:1.1rem;margin:8px 0 28px}
+pre{background:var(--card);border:1px solid var(--bord);border-radius:10px;padding:18px;overflow-x:auto;font-size:.9rem;margin:24px 0}
+code{font-family:"SF Mono",Menlo,monospace}.k{color:var(--acc)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin:28px 0}
+.card{background:var(--card);border:1px solid var(--bord);border-radius:10px;padding:20px}
+.card h3{font-size:1rem;margin-bottom:6px}.card p{color:var(--mut);font-size:.9rem}
+.foot{color:var(--mut);font-size:.85rem;margin-top:40px;border-top:1px solid var(--bord);padding-top:20px}
+</style></head><body><div class="wrap">
+<h1>recon<span>kit</span></h1>
+<p class="tag">Passive OSINT recon for any domain: subdomains from certificate transparency, DNS over HTTPS, and TLS certificate intel. No target contact required.</p>
+<pre><code><span class="k">$</span> python3 reconkit.py example.com
+[*] DNS records (via DNS-over-HTTPS)
+    A      104.20.23.154     MX    0 .
+[*] Certificate-transparency subdomains (crt.sh)
+    119 unique name(s)
+[*] TLS certificate
+    issuer : Cloudflare TLS Issuing ECC CA 3</code></pre>
+<div class="grid">
+<div class="card"><h3>Truly passive</h3><p>Subdomains come from public certificate-transparency logs. The target never sees a packet.</p></div>
+<div class="card"><h3>DNS without dig</h3><p>Full record sets over Cloudflare's DNS-over-HTTPS JSON API. Pure standard library.</p></div>
+<div class="card"><h3>Active when you need it</h3><p>Optional wordlist brute force is clearly labeled and separated for authorized engagements.</p></div>
+</div>
+<pre><code><span class="k">$</span> python3 reconkit.py example.com -o recon.json</code></pre>
+<p class="foot">Active mode is for domains you own or are authorized to test. MIT License.</p>
+</div></body></html>
